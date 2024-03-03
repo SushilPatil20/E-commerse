@@ -8,7 +8,7 @@
     </div>
     <ul class="space-y-4">
         <li class="px-4 py-2 hover:bg-gray-700 hover:text-white transition duration-300 rounded-md border border-gray-400">
-            <a href="{{ route('products.index') }}" class="block">Dashboard</a>
+            <a href="{{ route('admin.dashboard') }}" class="block">Dashboard</a>
         </li>
     </ul>
 @endsection

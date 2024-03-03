@@ -20,10 +20,12 @@
     <div class="h-screen dark:bg-gray-900">
         @yield('navBar')
         <section class="flex w-full" style="height: 90%">
-            <aside class="w-1/5 px-12 py-14 border-r border-gray-400 min-w-fit">
-                @yield('sideBar')
-            </aside>
-            <main class="w-4/5 p-12 overflow-y-auto">
+            @if (Auth::user()->role !== 'user')
+                <aside class="w-1/5 px-12 py-14 border-r border-gray-400 min-w-fit">
+                    @yield('sideBar')
+                </aside>
+            @endif
+            <main class="{{ Auth::user()->role === 'user' ? 'w-full flex flex-wrap' : 'w-4/5' }}  p-12 overflow-y-auto">
                 @yield('content')
             </main>
         </section>

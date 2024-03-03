@@ -3,10 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+
+    public function dashboard()
+    {
+        $products = Product::all();
+        return view('users.dashboard', ['products' => $products]);
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -15,6 +23,7 @@ class UserController extends Controller
         $users = User::where('role', 'user')->get();
         return view('users.index', ['users' => $users]);
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -37,7 +46,8 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $user = User::where('id', $id)->get()->first();
+        return view('users.show', ['user' => $user]);
     }
 
     /**
@@ -61,6 +71,7 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
+        dd($id);
         //
     }
 }

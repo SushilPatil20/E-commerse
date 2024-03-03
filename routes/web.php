@@ -9,6 +9,8 @@ use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use PHPUnit\Framework\MockObject\Stub\ReturnReference;
 
+require __DIR__ . '/auth.php';
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,8 +35,7 @@ Route::middleware([CheckRole::class . ':admin'])->group(function () {
 
 
 Route::middleware([CheckRole::class . ':user'])->group(function () {
-    // Route::get('admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
-
+    Route::get('/home', [UserController::class, 'dashboard'])->name('users.dashboard');
 });
 
 
@@ -48,8 +49,3 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__ . '/auth.php';
-
-
-
-//hello

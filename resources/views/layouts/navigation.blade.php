@@ -6,7 +6,8 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('products.index') }}">
+                    {{-- {{ Auth::user()->role === 'user' ? 'w-full' : 'w-4/5' }} --}}
+                    <a href="{{ Auth::user()->role === 'admin' ? route('admin.dashboard') : route('users.dashboard') }}">
                         <x-application-logo />
                     </a>
                 </div>
